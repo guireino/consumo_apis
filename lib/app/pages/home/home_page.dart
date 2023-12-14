@@ -77,6 +77,7 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           } else {
+            //List dos produtos
             return ListView.separated(
               separatorBuilder: (context, index) => const SizedBox(
                 height: 32,

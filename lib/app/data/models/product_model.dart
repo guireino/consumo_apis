@@ -23,7 +23,7 @@ class ProductModel {
     required this.images,
   });
 
-  //buscando os valores apis no site https://dummyjson.com/products
+  //buscando os valores apis no site https://dummyjson.com/products com nome das variáveis
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
       title: map['title'],

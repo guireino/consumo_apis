@@ -18,17 +18,17 @@ class ProductRepository implements IProductRepository {
   Future<List<ProductModel>> getProduct() async {
 
     //buscando variáveis no site
-    final respose = await client.get(
+    final response = await client.get(
       utl: 'https://dummyjson.com/products'
     );
 
     // verificando se deu certo
-    if (respose.statusCode == 200) {
+    if (response.statusCode == 200) {
 
         final List<ProductModel> products = [];
-        final body = jsonDecode(respose.body);
+        final body = jsonDecode(response.body);
 
-        //buscando na variável products a sua list de variável
+        //buscando na variável products a sua list de variável do item dos produtos
         body["products"].map((item) {
           final ProductModel product = ProductModel.fromMap(item);
           products.add(product);
@@ -36,7 +36,7 @@ class ProductRepository implements IProductRepository {
 
       return products;
 
-    }else if(respose.statusCode == 404){
+    }else if(response.statusCode == 404){
       throw NotFoundException(message: "A url informada não e valida");
     } else {
       throw Exception("Não foi possível carregar os produtos");
